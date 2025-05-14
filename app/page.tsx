@@ -17,6 +17,7 @@ interface Project {
   category: string;
   image: string;
   technologies: string[];
+  link: string;
 }
 
 interface TabButtonProps {
@@ -32,6 +33,7 @@ interface ProjectCardProps {
   category: string;
   image: string;
   technologies: string[];
+  link: string;
 }
 
 export default function Home() {
@@ -198,6 +200,7 @@ export default function Home() {
                   category={project.category}
                   image={project.image}
                   technologies={project.technologies}
+                  link={project.link}
                 />
               ))}
             </div>
@@ -254,7 +257,7 @@ function DesktopTabButton({ children, active, onClick }: TabButtonProps) {
   )
 }
 
-function ProjectCard({ title, description, category, image, technologies }: ProjectCardProps) {
+function ProjectCard({ title, description, category, image, technologies, link }: ProjectCardProps) {
   return (
     <Card className="overflow-hidden bg-zinc-900/50 border-zinc-800 hover:border-zinc-700 transition-all duration-300 group">
       <div className="relative aspect-video overflow-hidden">
@@ -278,9 +281,10 @@ function ProjectCard({ title, description, category, image, technologies }: Proj
       <CardContent className="p-4 sm:p-6">
         <div className="text-xs font-medium text-teal-400 mb-2">{category}</div>
         <h3 className="text-lg sm:text-xl font-semibold mb-2">{title}</h3>
-        <p className="text-zinc-400 text-xs sm:text-sm mb-4">{description}</p>
         <Link
-          href="#"
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex items-center text-xs sm:text-sm font-medium text-teal-400 hover:text-teal-300 transition-colors"
         >
           View Project <ArrowRight className="ml-1 h-3 w-3 sm:h-4 sm:w-4" />
